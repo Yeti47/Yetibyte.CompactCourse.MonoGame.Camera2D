@@ -74,7 +74,7 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             _tileMap.Draw(_spriteBatch);
             _player.Draw(_spriteBatch);
