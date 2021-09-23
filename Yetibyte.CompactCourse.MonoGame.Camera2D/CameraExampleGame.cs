@@ -5,12 +5,18 @@ using System.IO;
 
 namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 {
-
     public class CameraExampleGame : Game
     {
+        #region Constants
+
         private const string TEST_MAP_ASSET_NAME = "testmap.json";
         private const string PLAYER_SPRITE_ASSET_NAME = "F_01";
         private const string CONTENT_ROOT_DIRECTORY = "Content";
+        private const string WINDOW_TITLE = "Compact Course: Camera2D";
+
+        #endregion
+
+        #region Fields
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -19,6 +25,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         private Player _player;
         private PlayerController _playerController;
 
+        #endregion
+
+        #region Constructors
+
         public CameraExampleGame()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -26,12 +36,18 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             IsMouseVisible = true;
         }
 
+        #endregion
+
+        #region Methods
+
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = 16 * 30;
             _graphics.PreferredBackBufferHeight = 16 * 30;
 
             _graphics.ApplyChanges();
+
+            Window.Title = WINDOW_TITLE;
 
             base.Initialize();
         }
@@ -83,5 +99,8 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
             base.Draw(gameTime);
         }
+
+        #endregion
+
     }
 }

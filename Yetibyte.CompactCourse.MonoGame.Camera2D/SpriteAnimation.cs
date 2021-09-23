@@ -6,10 +6,18 @@ using System.Linq;
 
 namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 {
+    /// <summary>
+    /// Describes a <see cref="Sprite"/>-based animation with an arbitrary number of frames.
+    /// </summary>
     public class SpriteAnimation
     {
+        #region Fields
 
         private List<SpriteAnimationFrame> _frames = new List<SpriteAnimationFrame>();
+
+        #endregion
+
+        #region Indexers
 
         public SpriteAnimationFrame this[int index]
         {
@@ -20,6 +28,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             }
 
         }
+
+        #endregion
+
+        #region Properties
 
         public int FrameCount => _frames.Count;
 
@@ -57,6 +69,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         public float PlaybackProgress { get; private set; }
 
         public bool ShouldLoop { get; set; } = true;
+
+        #endregion
+
+        #region Methods
 
         public void AddFrame(Sprite sprite, float timeStamp)
         {
@@ -148,6 +164,9 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             return anim;
 
         }
+
+        #endregion
+
 
     }
 }

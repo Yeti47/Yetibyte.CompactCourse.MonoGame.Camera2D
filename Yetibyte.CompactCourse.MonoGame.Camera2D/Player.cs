@@ -5,10 +5,12 @@ using System.Collections.Generic;
 namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 {
     /// <summary>
-    /// Represents the player character.
+    /// Describes the player character.
     /// </summary>
     public class Player
     {
+        #region Constants
+
         private const float EPSILON = 0.01f;
 
         private const int SPRITE_WIDTH = 16;
@@ -17,6 +19,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         private const float ANIMATION_FRAME_DURATION = 1 / 8f;
 
         private const float TILES_PER_SECOND = 6f;
+
+        #endregion
+
+        #region Fields
 
         private readonly SpriteAnimation _walkUpAnimation;
         private readonly SpriteAnimation _walkDownAnimation;
@@ -30,6 +36,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         private bool _wasWalking = false;
         private Vector2 _walkStartPositon;
         private Vector2 _walkDestination;
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// The current world position of this <see cref="Player"/>.
@@ -70,7 +80,11 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         /// <summary>
         /// The direction this <see cref="Player"/> is currently facing.
         /// </summary>
-        public FaceDirection FaceDirection { get; private set; } = FaceDirection.Down;
+        public Direction FaceDirection { get; private set; } = Direction.Down;
+
+        #endregion
+
+        #region Constructors
 
         public Player(Texture2D texture, TileMap tileMap)
         {
@@ -117,6 +131,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             _walkLeftAnimation.AddFrame(new Sprite(texture, SPRITE_WIDTH * 3, SPRITE_HEIGHT * 2, SPRITE_WIDTH, SPRITE_HEIGHT), ANIMATION_FRAME_DURATION * 4);
 
         }
+
+        #endregion
+
+        #region Methods
 
         public void Update(GameTime gameTime)
         {
@@ -197,7 +215,7 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             if (IsWalking)
                 return false;
 
-            FaceDirection = FaceDirection.Up;
+            FaceDirection = Direction.Up;
 
             Vector2 destination = _position - Vector2.UnitY * _tileMap.TileSize;
             destination = _tileMap.SnapToTilePosition(destination);
@@ -215,7 +233,7 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             if (IsWalking)
                 return false;
 
-            FaceDirection = FaceDirection.Down;
+            FaceDirection = Direction.Down;
 
             Vector2 destination = _position + Vector2.UnitY * _tileMap.TileSize;
             destination = _tileMap.SnapToTilePosition(destination);
@@ -233,7 +251,7 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             if (IsWalking)
                 return false;
 
-            FaceDirection = FaceDirection.Right;
+            FaceDirection = Direction.Right;
 
             Vector2 destination = _position + Vector2.UnitX * _tileMap.TileSize;
             destination = _tileMap.SnapToTilePosition(destination);
@@ -251,7 +269,7 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             if (IsWalking)
                 return false;
 
-            FaceDirection = FaceDirection.Left;
+            FaceDirection = Direction.Left;
 
             Vector2 destination = _position - Vector2.UnitX * _tileMap.TileSize;
             destination = _tileMap.SnapToTilePosition(destination);
@@ -259,6 +277,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             return Move(destination);
         }
 
+        /// <summary>
+        /// Renders this <see cref="Player"/> to the screen using the given sprite batch.
+        /// </summary>
+        /// <param name="spriteBatch">The spritebatch to render the player with.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             Vector2 renderPosition = _position - new Vector2(SPRITE_WIDTH / 2f, SPRITE_HEIGHT / 2f);
@@ -267,16 +289,16 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
             switch (FaceDirection)
             {
-                case FaceDirection.Down:
+                case Direction.Down:
                     animation = _walkDownAnimation;
                     break;
-                case FaceDirection.Up:
+                case Direction.Up:
                     animation = _walkUpAnimation;
                     break;
-                case FaceDirection.Left:
+                case Direction.Left:
                     animation = _walkLeftAnimation;
                     break;
-                case FaceDirection.Right:
+                case Direction.Right:
                     animation = _walkRightAnimation;
                     break;
                 default:
@@ -285,6 +307,8 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
             animation.Draw(spriteBatch, renderPosition);
         }
+
+        #endregion
 
     }
 }

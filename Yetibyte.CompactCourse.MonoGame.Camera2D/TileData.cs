@@ -2,6 +2,9 @@
 
 namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 {
+    /// <summary>
+    /// Encapsulates serializable tile data.
+    /// </summary>
     [Serializable]
     public class TileData
     {

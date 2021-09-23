@@ -5,16 +5,27 @@ using System;
 
 namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 {
-
+    /// <summary>
+    /// Describes a tile-based map.
+    /// </summary>
     public class TileMap
     {
+        #region Fields
 
         private readonly Tile[,] _tiles;
         private readonly Point _clearTileIndex;
 
+        #endregion
+
+        #region Properties
+
         public Texture2D Texture { get; }
         public Vector2 Position { get; set; }
         public int TileSize { get; }
+
+        #endregion
+
+        #region Constructors
 
         public TileMap(Texture2D texture, Vector2 position, int tileSize, Point mapSize, Point? clearTileIndex = null)
         {
@@ -31,6 +42,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             Clear();
         }
 
+        #endregion
+
+        #region Methods
+
         public static TileMap FromData(TileMapData data, ContentManager content, Vector2 position)
         {
             if (data == null)
@@ -45,7 +60,7 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
             for(int y = 0; y < data.Height; y++)
             {
-                for(int x = 0; x < data.Width; x++)
+                for(int x = 0; x < data.Tiles[y].Length; x++)
                 {
                     TileData tileData = data.Tiles[y][x];
                     map.SetTile(new Point(tileData.X, tileData.Y), x, y, tileData.IsBlocked);
@@ -131,6 +146,8 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
             return _tiles[posX, posY].IsBlocked;
         }
+
+        #endregion
 
     }
 }
