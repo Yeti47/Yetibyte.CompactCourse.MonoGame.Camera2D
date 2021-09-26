@@ -1,0 +1,285 @@
+<Project>
+  <Name>CompactCourse</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Camera2D</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Enum">
+        <Name>Direction</Name>
+        <Access>Public</Access>
+        <Location left="855" top="311" />
+        <Size width="162" height="129" />
+        <Collapsed>False</Collapsed>
+        <Value>Down</Value>
+        <Value>Up</Value>
+        <Value>Left</Value>
+        <Value>Right</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>Player</Name>
+        <Access>Public</Access>
+        <Location left="514" top="356" />
+        <Size width="226" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private readonly SpriteAnimation _walkUpAnimation</Member>
+        <Member type="Field">private readonly SpriteAnimation _walkLeftAnimation</Member>
+        <Member type="Field">private readonly SpriteAnimation _walkDownAnimation</Member>
+        <Member type="Field">private readonly SpriteAnimation _walkRightAnimation</Member>
+        <Member type="Field">private readonly TileMap _tileMap</Member>
+        <Member type="Property">public Direction FaceDirection { get; private set; }</Member>
+        <Member type="Property">public Vector2 Position { get; set; }</Member>
+        <Member type="Property">public Vector2 WalkDestination { get; private set; }</Member>
+        <Member type="Method">public void Update(GameTime gameTime)</Member>
+        <Member type="Method">public bool MoveUp()</Member>
+        <Member type="Method">public bool MoveDown()</Member>
+        <Member type="Method">public bool MoveLeft()</Member>
+        <Member type="Method">public bool MoveRight()</Member>
+        <Member type="Method">public void Update(GameTime gameTime)</Member>
+        <Member type="Method">public void Draw(SpriteBatch spriteBatch)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PlayerController</Name>
+        <Access>Public</Access>
+        <Location left="106" top="356" />
+        <Size width="237" height="166" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private readonly Player _player</Member>
+        <Member type="Method">public void Update(GameTime gameTime)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CameraExampleGame</Name>
+        <Access>Public</Access>
+        <Location left="310" top="34" />
+        <Size width="235" height="184" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Player _player</Member>
+        <Member type="Field">private PlayerController _playerController</Member>
+        <Member type="Field">private TileMap _tileMap</Member>
+        <Member type="Method">protected override void Initialize()</Member>
+        <Member type="Method">protected override void Update(GameTime gameTime)</Member>
+        <Member type="Method">protected override void Draw()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Game</Name>
+        <Access>Public</Access>
+        <Location left="35" top="34" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>TileMap</Name>
+        <Access>Public</Access>
+        <Location left="678" top="34" />
+        <Size width="360" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Tile[,] _tiles</Member>
+        <Member type="Property">public Texture2D Texture { get; }</Member>
+        <Member type="Property">public Vector2 Position { get; set; }</Member>
+        <Member type="Property">public int TileSize { get; }</Member>
+        <Member type="Method">public void Draw(SpriteBatch spriteBatch)</Member>
+        <Member type="Method">public void SetTile(Point tileIndex, int posX, int posY, bool isBlocked)</Member>
+        <Member type="Method">public void Clear()</Member>
+        <Member type="Method">public Vector2 SnapToTilePosition(Vector2 worldPosition)</Member>
+        <Member type="Method">public Point WorldPositionToTilePosition(Vector2 worldPosition)</Member>
+        <Member type="Method">public bool IsTileBlocked(int posX, int posY)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>Class from MonoGame
+framework</Text>
+        <Location left="35" top="166" />
+        <Size width="160" height="52" />
+      </Entity>
+      <Entity type="Class">
+        <Name>Tile</Name>
+        <Access>Public</Access>
+        <Location left="1104" top="34" />
+        <Size width="220" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Point Index { get; set; }</Member>
+        <Member type="Property">public TileMap TileMap { get; private set; }</Member>
+        <Member type="Property">public Point Position { get; }</Member>
+        <Member type="Property">public bool IsBlocked { get; set; }</Member>
+        <Member type="Method">public void Draw(SpriteBatch spriteBatch)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SpriteAnimation</Name>
+        <Access>Public</Access>
+        <Location left="855" top="462" />
+        <Size width="309" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;SpriteAnimationFrame&gt; _frames</Member>
+        <Member type="Property">public int FrameCount { get; }</Member>
+        <Member type="Property">public float Duration { get; }</Member>
+        <Member type="Property">public bool IsPlaying { get; private set; }</Member>
+        <Member type="Property">public float PlaybackProgress { get; private set; }</Member>
+        <Member type="Property">public bool ShouldLoop { get; set; }</Member>
+        <Member type="Method">public void Update(GameTime gameTime)</Member>
+        <Member type="Method">public void Draw(SpriteBatch spriteBatch, Vector2 position)</Member>
+        <Member type="Method">public void Play()</Member>
+        <Member type="Method">public void Stop()</Member>
+        <Member type="Method">public void AddFrame(Sprite sprite, float timeStamp)</Member>
+        <Member type="Method">public SpriteAnimationFrame GetFrame(int index)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SpriteAnimatonFrame</Name>
+        <Access>Public</Access>
+        <Location left="1227" top="479" />
+        <Size width="180" height="114" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Sprite Sprite { get; set; }</Member>
+        <Member type="Property">public float TimeStamp { get; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Sprite</Name>
+        <Access>Public</Access>
+        <Location left="1104" top="230" />
+        <Size width="310" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Texture2D Texture { get; set; }</Member>
+        <Member type="Property">public int X { get; set; }</Member>
+        <Member type="Property">public int Y { get; set; }</Member>
+        <Member type="Property">public int Width { get; set; }</Member>
+        <Member type="Property">public int Height { get; set; }</Member>
+        <Member type="Method">public void Draw(SpriteBatch spriteBatch, Vector2 position)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="2" second="1">
+        <Label>controls</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="3" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>427</X>
+          <Y>259</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>427</X>
+          <Y>257</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>704</X>
+          <Y>331</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>575</X>
+          <Y>64</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Comment" first="6" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>89</X>
+          <Y>136</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>765</X>
+          <Y>373</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1063</X>
+          <Y>66</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>775</X>
+          <Y>489</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>830</X>
+          <Y>489</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="8" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1309</X>
+          <Y>443</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
