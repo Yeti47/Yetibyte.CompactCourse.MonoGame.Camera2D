@@ -19,8 +19,19 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
         #region Properties
 
+        /// <summary>
+        /// The texture to use for the tileset.
+        /// </summary>
         public Texture2D Texture { get; }
+
+        /// <summary>
+        /// The position in world space at which to render the map.
+        /// </summary>
         public Vector2 Position { get; set; }
+
+        /// <summary>
+        /// The tile size in pixels.
+        /// </summary>
         public int TileSize { get; }
 
         #endregion
@@ -46,6 +57,13 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
         #region Methods
 
+        /// <summary>
+        /// Creates an instance of <see cref="TileMap"/> from the given <see cref="TileMapData"/>.
+        /// </summary>
+        /// <param name="data">An object encapsulating the tile map's data.</param>
+        /// <param name="content">Content manager instance to load content with.</param>
+        /// <param name="position">The position of the map in world space.</param>
+        /// <returns></returns>
         public static TileMap FromData(TileMapData data, ContentManager content, Vector2 position)
         {
             if (data == null)
@@ -108,6 +126,10 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             }
         }
 
+        /// <summary>
+        /// Renders this <see cref="TileMap"/> to the screen.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             for (int y = 0; y < _tiles.GetLength(1); y++)
@@ -120,6 +142,11 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             }
         }
 
+        /// <summary>
+        /// Gets the center of the tile the given world position lies on.
+        /// </summary>
+        /// <param name="worldPosition">The position in world space to get the tile center for.</param>
+        /// <returns>The centered position of the tile.</returns>
         public Vector2 SnapToTilePosition(Vector2 worldPosition)
         {
             Point tilePos = WorldPositionToTilePosition(worldPosition);
@@ -136,6 +163,12 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
             return new Point((int)Math.Floor(relativeMapPos.X / (float)TileSize), (int)Math.Floor(relativeMapPos.Y / (float)TileSize));
         }
 
+        /// <summary>
+        /// Checks if the tile at the specified position is blocked.
+        /// </summary>
+        /// <param name="posX">The x position of the tile.</param>
+        /// <param name="posY">The y position of the tile.</param>
+        /// <returns>True if the tile is impassable; false otherwise.</returns>
         public bool IsTileBlocked(int posX, int posY)
         {
             if (posX >= _tiles.GetLength(0) || posX < 0)
