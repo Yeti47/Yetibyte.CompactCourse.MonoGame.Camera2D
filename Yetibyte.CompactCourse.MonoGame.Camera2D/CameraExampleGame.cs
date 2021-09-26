@@ -13,6 +13,7 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         private const string PLAYER_SPRITE_ASSET_NAME = "F_01";
         private const string CONTENT_ROOT_DIRECTORY = "Content";
         private const string WINDOW_TITLE = "Compact Course: Camera2D";
+        private const string DEFAULT_FONT_ASSET_NAME = "DefaultFont";
 
         #endregion
 
@@ -20,6 +21,7 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private SpriteFont _defaultFont;
 
         private TileMap _tileMap;
         private Player _player;
@@ -55,6 +57,8 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _defaultFont = Content.Load<SpriteFont>(DEFAULT_FONT_ASSET_NAME);
 
             string testMapPath = Path.Combine(Content.RootDirectory, TEST_MAP_ASSET_NAME);
 
@@ -97,7 +101,18 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
             _spriteBatch.End();
 
+            DrawInstructions();
+
             base.Draw(gameTime);
+        }
+
+        private void DrawInstructions()
+        {
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+
+            _spriteBatch.DrawString(_defaultFont, "Use WASD to move.", new Vector2(4, 4), Color.White);
+
+            _spriteBatch.End();
         }
 
         #endregion

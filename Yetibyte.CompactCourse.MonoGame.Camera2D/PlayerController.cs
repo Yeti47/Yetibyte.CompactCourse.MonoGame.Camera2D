@@ -30,19 +30,19 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
         {
             KeyboardState keyboardState = Keyboard.GetState();
 
-            if(keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
+            if(keyboardState.IsKeyDown(Keys.W))
             {
                 _player.MoveUp();
             }
-            else if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
+            else if (keyboardState.IsKeyDown(Keys.S))
             {
                 _player.MoveDown();
             }
-            else if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
+            else if (keyboardState.IsKeyDown(Keys.A))
             {
                 _player.MoveLeft();
             }
-            else if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
+            else if (keyboardState.IsKeyDown(Keys.D))
             {
                 _player.MoveRight();
             }
