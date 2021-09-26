@@ -51,6 +51,8 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
             Window.Title = WINDOW_TITLE;
 
+            // We subscribe to the ClientSizeChanged event using a lambda expression
+            // to prevent resizing of the game window.
             Window.ClientSizeChanged += (o, e) =>
              {
                  _graphics.PreferredBackBufferWidth = 16 * 30;
