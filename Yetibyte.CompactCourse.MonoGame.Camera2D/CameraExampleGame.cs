@@ -51,6 +51,14 @@ namespace Yetibyte.CompactCourse.MonoGame.Camera2D
 
             Window.Title = WINDOW_TITLE;
 
+            Window.ClientSizeChanged += (o, e) =>
+             {
+                 _graphics.PreferredBackBufferWidth = 16 * 30;
+                 _graphics.PreferredBackBufferHeight = 16 * 30;
+
+                 _graphics.ApplyChanges();
+             };
+
             base.Initialize();
         }
 
